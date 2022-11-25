@@ -1,40 +1,29 @@
 import './App.css';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Menu from './Components/Menu';
 import Game from './Components/Game';
 
-class App extends Component {
+const App = () => {
   
-  constructor(props) {
-    super(props);
-    this.state = {
-      page: 'menu',
-    };
-    document.body.classList.add(
-      'bg-black',
-    );
+  const [ page, setPage ] = useState('menu');
+  const [ settings, setSettings ] = useState({});
 
-    this.changePage = this.changePage.bind(this);
+  const changePage = (page, settings) => {
+    settings = settings || {};
+    setSettings(settings);
+    setPage(page);
   }
 
-  changePage(page) {
-    this.setState({
-      page: page
-    })
-  }
-
-  render() {
-    return (
-      <div className="h-screen w-screen">
-        { this.state.page === 'menu' && (
-          <Menu changePage = {this.changePage}></Menu>
-        ) }
-        { this.state.page === 'game' && (
-          <Game changePage = {this.changePage}></Game>
-        ) }
-      </div>
-    );
-  }
+  return (
+    <div className="h-screen w-screen">
+      { page === 'menu' && (
+        <Menu changePage = {changePage}></Menu>
+      ) }
+      { page === 'game' && (
+        <Game changePage = {changePage} settings={settings}></Game>
+      ) }
+    </div>
+  );
 }
 
 export default App;
