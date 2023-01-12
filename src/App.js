@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import Menu from './Components/Menu';
 import Game from './Components/Game';
+import background from './assets/background.png';
 
 const App = () => {
   
@@ -15,7 +16,7 @@ const App = () => {
   }
 
   return (
-    <div className="h-screen w-screen">
+    <div className="h-screen w-screen bg-cover" style={{backgroundImage: `url(${background})`}}>
       { page === 'menu' && (
         <Menu changePage = {changePage}></Menu>
       ) }

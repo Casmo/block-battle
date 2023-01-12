@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Peer } from "peerjs";
 import Copy from "./Copy";
+import Canvas from "./Canvas";
 
 const Game = ({ changePage, settings }) => {
   const [type, setType] = useState();
@@ -84,8 +85,8 @@ const Game = ({ changePage, settings }) => {
   };
 
   return (
-    <div className="h-full bg-gradient-to-r from-sky-900 via-sky-700 to-sky-800 flex items-center justify-center">
-      <canvas width="1920" height="1080" className="max-w-full max-h-full bg-black mx-auto my-auto"></canvas>
+    <div className="h-full flex items-center justify-center">
+      <Canvas players={players} />
       <div className="fixed top-1 right-1">
         <svg
           onClick={disconnect}
